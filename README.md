@@ -27,7 +27,10 @@ Un usario tipo Doctro podra ver todas las citas existentes y todos los usarios r
 
 ### _Deploy_
 
-<a href=" https://josejakkan.github.io/DentalClinic/">Proyecto</a>
+<div align:"center">
+<a href="https://josejakkan.github.io/DentalClinic/">Proyecto</a>
+</a>
+</div>
 
 <a name="item3"></a>
 
@@ -48,7 +51,7 @@ Tecnologias usadas:
 
 ### _Diagrama_
 
-![Diagrama de la Clinica Dental.](.public/images/ClinicaDental.png)
+![Diagrama de la Clinica Dental.](https://raw.githubusercontent.com/JoseJakkan/DentalClinic/main/assets/ClinicaDental.png)
 
 <a name="item5"></a>
 
@@ -65,15 +68,15 @@ La ruta para instalar el proyecto es la siguiente:
 
 Una vez realizados estos pasos se puede acceder al proyecto.
 
-<a name="item5"></a>
+<a name="item6"></a>
 
 ### _Endpoints_
 
 Los Endopoints actualmente son los siguientes
 
-- Endpoints de Auth
+1- Endpoints de Auth
 
-* Register:
+- Register:
 
   POST http://localhost:3000/auth/register
 
@@ -99,9 +102,9 @@ Los Endopoints actualmente son los siguientes
   "password": "12345678"
   }
 
-- Endpoints de Admin
+2. Endpoints de Admin
 
-* getAll
+- getAll
   GET http://localhost:3000/admin/getAll?page=1
 
 -getById
@@ -113,23 +116,23 @@ GET http://localhost:3000/admin/10
 
 En futuras actualizaciones se crearan los siguiente Endpoints
 
-- Como usuario:
+1. Como usuario:
 
-* Busqueda del propio perfil
-* Modificacion del propio perfil
-* Pedir cita
-* Modificar cita
-* Eliminar cita
+- Busqueda del propio perfil
+- Modificacion del propio perfil
+- Pedir cita
+- Modificar cita
+- Eliminar cita
 
-- Como doctor
+2.  Como doctor
 
-* Consultar sus propias citas
-* Consultar todos los pacientes
+- Consultar sus propias citas
+- Consultar todos los pacientes
 
 <a name="item8"></a>
 
 ### _Sobre el autor_
 
-Jose Antonio Lopez
-Estudiante de GeeksHubs Academy https://geekshubsacademy.com/
-e-mail: lopez.joseantonio82@gmail.com
+- Jose Antonio Lopez
+- Estudiante de GeeksHubs Academy https://geekshubsacademy.com/
+- e-mail: lopez.joseantonio82@gmail.com
