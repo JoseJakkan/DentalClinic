@@ -1,14 +1,6 @@
 #Appi Backend de Clinica Dental
 
-##Contenido
-1-[Sobre el Proyecto](#item1)
-2-[Deploy](#item2)
-3-[Stack](#item3)
-4-[Diagrama](#item4)
-5-[Insatalacion](#item5)
-6-[Endpoints](#item6)
-7-[Futuras mejoras](#item7)
-8-[Sobre el autor](#item8)
+##Contenido 1.[Sobre el Proyecto](#item1) 2.[Deploy](#item2) 3.[Stack](#item3) 4.[Diagrama](#item4) 5.[Insatalacion](#item5) 6.[Endpoints](#item6) 7.[Futuras mejoras](#item7) 8.[Sobre el autor](#item8)
 
 <a name="item1"></a>
 
@@ -34,13 +26,13 @@ Un usario tipo Doctro podra ver todas las citas existentes y todos los usarios r
 
 Tecnologias usadas:
 *JavaScript
-*Node.Js
-*Express.Js
+-Node.Js
++Express.Js
 *MySQL
-*Sequelize
-*MySQL Workbench
-*Postman
-*Docker Dekstop
+-Sequelize
++MySQL Workbench
+\*Postman
+-Docker Dekstop
 
 <a name="item4"></a>
 
@@ -53,12 +45,13 @@ Tecnologias usadas:
 ### _Instalacion_
 
 La ruta para instalar el proyecto es la siguiente:
-1-Clonar el repositorio
-2-$ npm install
-3-Conectamos nuestro repositorio con la base de datos
-4-$ Ejecutamos las migraciones
-5-$ Ejecutamos los seeders
-6-$ npm run dev
+
+1. Clonar el repositorio
+2. $ npm install
+3. Conectamos nuestro repositorio con la base de datos
+4. $ Ejecutamos las migraciones
+5. $ Ejecutamos los seeders
+6. $ npm run dev
 
 Una vez realizados estos pasos se puede acceder al proyecto.
 
@@ -68,7 +61,7 @@ Una vez realizados estos pasos se puede acceder al proyecto.
 
 Los Endopoints actualmente son los siguientes
 
-\*Endpoints de Auth
++Endpoints de Auth
 -Register:
 
     POST http://localhost:3000/auth/register
@@ -94,7 +87,7 @@ Los Endopoints actualmente son los siguientes
         "password": "12345678"
     }
 
-\*Endpoints de Admin
++Endpoints de Admin
 
 -getAll
 GET http://localhost:3000/admin/getAll?page=1
