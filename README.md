@@ -1,6 +1,15 @@
 #Appi Backend de Clinica Dental
 
-##Contenido 1.[Sobre el Proyecto](#item1) 2.[Deploy](#item2) 3.[Stack](#item3) 4.[Diagrama](#item4) 5.[Insatalacion](#item5) 6.[Endpoints](#item6) 7.[Futuras mejoras](#item7) 8.[Sobre el autor](#item8)
+##Contenido
+
+1. [Sobre el Proyecto](#item1)
+2. [Deploy](#item2)
+3. [Stack](#item3)
+4. [Diagrama](#item4)
+5. [Insatalacion](#item5)
+6. [Endpoints](#item6)
+7. [Futuras mejoras](#item7)
+8. [Sobre el autor](#item8)
 
 <a name="item1"></a>
 
@@ -25,14 +34,15 @@ Un usario tipo Doctro podra ver todas las citas existentes y todos los usarios r
 ### _Stack_
 
 Tecnologias usadas:
-*JavaScript
--Node.Js
-+Express.Js
-*MySQL
--Sequelize
-+MySQL Workbench
-\*Postman
--Docker Dekstop
+
+- JavaScript
+- Node.Js
+- Express.Js
+- MySQL
+- Sequelize
+- MySQL Workbench
+- Postman
+- Docker Dekstop
 
 <a name="item4"></a>
 
@@ -61,10 +71,11 @@ Una vez realizados estos pasos se puede acceder al proyecto.
 
 Los Endopoints actualmente son los siguientes
 
-+Endpoints de Auth
--Register:
+- Endpoints de Auth
 
-    POST http://localhost:3000/auth/register
+* Register:
+
+  POST http://localhost:3000/auth/register
 
         Body:
 
@@ -77,20 +88,21 @@ Los Endopoints actualmente son los siguientes
             "address": "42 Wallaby St. Sidney",
             "phone": "488870503"
         }
-    -Login
 
-    POST http://localhost:3000/auth/login
+  - Login
 
-    Body:
-    {
-        "email": "QueenTwoEgipts@aspid.com",
-        "password": "12345678"
-    }
+  POST http://localhost:3000/auth/login
 
-+Endpoints de Admin
+  Body:
+  {
+  "email": "QueenTwoEgipts@aspid.com",
+  "password": "12345678"
+  }
 
--getAll
-GET http://localhost:3000/admin/getAll?page=1
+- Endpoints de Admin
+
+* getAll
+  GET http://localhost:3000/admin/getAll?page=1
 
 -getById
 GET http://localhost:3000/admin/10
@@ -101,15 +113,18 @@ GET http://localhost:3000/admin/10
 
 En futuras actualizaciones se crearan los siguiente Endpoints
 
--Como usuario:
-+Busqueda del propio perfil
-+Modificacion del propio perfil
-+Pedir cita
-+Modificar cita
-+Eliminar cita
--Como doctor
-+Consultar sus propias citas
-+Consultar todos los pacientes
+- Como usuario:
+
+* Busqueda del propio perfil
+* Modificacion del propio perfil
+* Pedir cita
+* Modificar cita
+* Eliminar cita
+
+- Como doctor
+
+* Consultar sus propias citas
+* Consultar todos los pacientes
 
 <a name="item8"></a>
 
