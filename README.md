@@ -26,10 +26,7 @@ Un usario tipo Doctro podra ver todas las citas existentes y todos los usarios r
 
 ### _Deploy_
 
-<div align:"center">
-<a href="">Proyecto</a>
-</a>
-</div>
+<a href=" https://josejakkan.github.io/DentalClinic/">Proyecto</a>
 
 <a name="item3"></a>
 
