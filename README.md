@@ -51,7 +51,7 @@ Tecnologias usadas:
 
 ### _Diagrama_
 
-![Diagrama de la Clinica Dental.](https://raw.githubusercontent.com/JoseJakkan/DentalClinic/main/assets/ClinicaDental.png)
+![Diagrama de la Clinica Dental.](ClinicaDental.png)
 
 <a name="item5"></a>
 
