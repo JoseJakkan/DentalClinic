@@ -1,25 +1,25 @@
-const jwt = require("jsonwebtoken");
+const { getTokenFromHeader, decodedToken } = require("../utils/token");
 
 module.exports = (req, res, next) => {
-  const { authorization } = req.headers;
+  // Verificar si hay token
+  const token = getTokenFromHeader(req.headers);
 
-  if (!authorization) {
+  if (!token) {
     return res.status(401).json({
       status: "Error",
       message: "No authorization token was found",
     });
   }
 
-  const token = authorization.split(" ")[1];
-
   try {
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    //Modificar el objeto request para pasarlo a la siguiente funcion
+    const decoded = decodedToken(token);
 
-    req.userId = decodedToken.userId;
-    req.userName = decodedToken.user.user_name;
-    req.userRole = decodedToken.userRole;
+    req.userId = decoded.userId;
+    req.userName = decoded.userName;
+    req.userRole = decoded.userRole;
 
-    next();
+    next(); // <----- con esto mandamos el objeto request a la siguiente funcion
   } catch (error) {
     res.status(400).json({
       status: "Error",

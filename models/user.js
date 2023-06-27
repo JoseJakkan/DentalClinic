@@ -9,19 +9,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // User {1..n}--{1} Role
-      User.belongsTo(models.Role, {
-        as: "role",
-        foreignKey: "role_id", // foreignKey de User
+      User.belongsTo(models.Roles, {
+        as: "roles",
+        foreignKey: "role_id", // foreignKey in the model User
       });
-    }
-    static associate(models) {
+
       // User {1}--{1..n} Staff
       User.hasMany(models.Staff, {
         as: "user",
         foreignKey: "user_id", // foreignKey de Staff
       });
-    }
-    static associate(models) {
+
       // User {1}--{1..n} Patients
       User.hasMany(models.Patient, {
         as: "patient",

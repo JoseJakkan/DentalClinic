@@ -1,4 +1,4 @@
-const { Users, Patient, Staff, Role } = require("../../models");
+const { User, Roles } = require("../../models");
 
 const models = require("../../models/index");
 
@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
   if (!page || page < 0) page = 1;
 
   const LIMIT = 3;
-  const userCount = await Users.count();
+  const userCount = await User.count();
   const maxPages = Math.ceil(userCount / LIMIT);
 
   if (page > maxPages) {
@@ -20,7 +20,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const users = await Users.findAll({
+    const users = await User.findAll({
       attributes: { exclude: ["password", "createdAt", "updatedAt"] },
       limit: LIMIT,
       offset: (page - 1) * LIMIT,
@@ -28,12 +28,11 @@ module.exports = async (req, res) => {
         "id",
         ["user_name", "name"],
         ["user_last_name", "last_name"],
-
       ],
       include: [
         {
-          model: Role,
-          as: "role",
+          model: Roles,
+          as: "roles",
           attributes: { exclude: ["createdAt", "updatedAt"] },
         },
       ],

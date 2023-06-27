@@ -1,11 +1,9 @@
 const bcrypt = require("bcrypt");
 const { generateToken } = require("../../utils/token");
 
-const { Role, User } = require("../../models");
+const { Roles, User } = require("../../models");
 
 const test = require("../../models");
-
-console.log(test.sequelize.models);
 
 /**
  * Login user
@@ -28,7 +26,7 @@ module.exports = async (req, res) => {
       where: {
         email: email,
       },
-      include: [{ model: Role, as: "role" }],
+      include: [{ model: Roles, as: "roles" }],
     });
 
     if (!user) {
@@ -50,17 +48,8 @@ module.exports = async (req, res) => {
     const token = generateToken({
       userId: user.id,
       userName: user.user_name,
-      userRole: user.role.role,
+      userRole: user.roles.roles,
     });
-
-    // const student = await Student.findOne({
-    //    where: {
-    //       id_user: user.id,
-    //    },
-    // });
-
-    // const courses = await student.getCourses();
-    // console.log(courses.length);
 
     res.status(200).json({
       token,
@@ -68,7 +57,7 @@ module.exports = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       status: "Error",
-      message: "Login Fail",
+      message: error.message,
     });
   }
 };

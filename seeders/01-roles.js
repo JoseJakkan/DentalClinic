@@ -4,15 +4,15 @@ const { Op } = require("sequelize");
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      "role",
+      "roles",
       [
         {
-          role: "admin",
+          roles: "admin",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          role: "user",
+          roles: "user",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -22,7 +22,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("role", {
+    await queryInterface.bulkDelete("roles", {
       [Op.or]: [{ role: "admin" }, { role: "user" }],
     });
   },

@@ -1,12 +1,11 @@
 module.exports = (req, res, next) => {
-  const userRole = req.userRole;
-
-  if (userRole == "admin") {
-    next();
-  } else {
+  const { userRole } = req;
+  if (userRole != "admin") {
     res.status(403).json({
       status: "Error",
-      message: "You shalt not pass!",
+      message: "Don't have permission",
     });
+  } else {
+    next();
   }
 };

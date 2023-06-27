@@ -36,7 +36,7 @@ module.exports = async (req, res) => {
       birthdate,
       address,
       phone,
-      role_id: 2, // role = user
+      roles_id: 2, // roles = user
       position_id: 4, //position = patient
     };
 
