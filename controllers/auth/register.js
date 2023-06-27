@@ -36,7 +36,7 @@ module.exports = async (req, res) => {
       birthdate,
       address,
       phone,
-      roles_id: 2, // roles = user
+      role_id: 2, // roles = user
       position_id: 4, //position = patient
     };
 
@@ -46,8 +46,6 @@ module.exports = async (req, res) => {
       message: "User created succsessfully",
     });
   } catch (error) {
-   
-
     const statusCode =
       error.name == "SequelizeUniqueConstraintError" ||
       error.name == "SequelizeValidationError"
