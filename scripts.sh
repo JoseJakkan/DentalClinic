@@ -3,22 +3,13 @@
 
 
 # crear modelo Roles
-sequelize model:generate --name Roles --attributes 'roles:integer'
-
-# crear modelo Position
-sequelize model:generate --name Position --attributes 'position:string'
+sequelize model:generate --name Roles --attributes 'roles:string'
 
 # crear modelo User
-sequelize model:generate --name User --attributes 'user_name:string,user_last_name:string,birthdate:date,email:string,password:string,phone:integer,role_id:integer,position_id:integer'
-
-# crear modelo Staff
-sequelize model:generate --name Staff --attributes 'role_id:integer,user_id:integer'
-
-# crear modelo Patient
-sequelize model:generate --name Patient --attributes 'user_id:integer'
+sequelize model:generate --name User --attributes 'user_name:string,user_last_name:string,birthdate:date,address:string,email:string,password:string,phone:integer,role_id:integer,position:string'
 
 # crear modelo Appointment
-sequelize model:generate --name Appointment --attributes 'patient_id:integer,staff_id:integer,date:DATE'
+sequelize model:generate --name Appointment --attributes 'user_id_integer,date:DATE'
 
 # las tablas intermedias en una relacion N:N no llevan modelo, pero si llevan migracion
 

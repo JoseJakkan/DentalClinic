@@ -1,4 +1,4 @@
-const { User, Roles } = require("../../models");
+const { User, roles } = require("../../models");
 
 const models = require("../../models/index");
 
@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
       ],
       include: [
         {
-          model: Roles,
+          model: roles,
           as: "roles",
           attributes: { exclude: ["createdAt", "updatedAt"] },
         },

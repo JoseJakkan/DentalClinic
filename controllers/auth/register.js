@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const { User } = require("../../models");
+const {  User } = require("../../models"); */
 
 /**
  * Create new user
@@ -7,6 +7,7 @@ const { User } = require("../../models");
  * @param {*} req Request object
  * @param {*} res Response object
  */
+
 module.exports = async (req, res) => {
   const {
     user_name,
@@ -36,16 +37,19 @@ module.exports = async (req, res) => {
       birthdate,
       address,
       phone,
-      role_id: 2, // roles = user
-      position_id: 4, //position = patient
+      id_role: 2, // role = user
+      position: "Patient",
     };
 
     const user = await User.create(newUser);
+
 
     res.status(201).json({
       message: "User created succsessfully",
     });
   } catch (error) {
+    
+
     const statusCode =
       error.name == "SequelizeUniqueConstraintError" ||
       error.name == "SequelizeValidationError"

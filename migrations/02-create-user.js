@@ -18,27 +18,28 @@ module.exports = {
       birthdate: {
         type: Sequelize.DATE,
       },
+      address: {
+        type: Sequelize.STRING,
+      },
       email: {
         type: Sequelize.STRING,
       },
       password: {
         type: Sequelize.STRING,
       },
-      address: {
-        type: Sequelize.STRING,
-      },
       phone: {
         type: Sequelize.INTEGER,
       },
-
-      role_id: {
+      roles_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "roles",
           key: "id",
         },
       },
-
+      position: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

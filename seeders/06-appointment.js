@@ -4,46 +4,40 @@ const { Op } = require("sequelize");
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      "appointment",
+      "Appointment",
       [
         {
-          staff_id: 1,
-          patient_id: 5,
+          user_id: 6,
           date: "2023-07-05",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          staff_id: 2,
-          patient_id: 10,
+          user_id: 7,
           date: "2023-07-08",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          staff_id: 3,
-          patient_id: 4,
+          user_id: 8,
           date: "2023-07-06",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          staff_id: 4,
-          patient_id: 6,
+          user_id: 9,
           date: "2023-07-12",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          staff_id: 3,
-          patient_id: 1,
+          user_id: 10,
           date: "2023-07-23",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          staff_id: 2,
-          patient_id: 12,
+          user_id: 11,
           date: "2023-07-17",
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -54,6 +48,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("appointment", {});
+    await queryInterface.bulkDelete("Appointment", {});
   },
 };

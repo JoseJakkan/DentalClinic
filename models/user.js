@@ -8,22 +8,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // User {1..n}--{1} Role
       User.belongsTo(models.Roles, {
-        as: "roles",
-        foreignKey: "role_id", // foreignKey in the model User
+        as: "role",
+        foreignKey: "roles_id",
       });
-
-      // User {1}--{1..n} Staff
-      User.hasMany(models.Staff, {
+    }
+    static associate(models) {
+      User.hasMany(models.Appointment, {
         as: "user",
-        foreignKey: "user_id", // foreignKey de Staff
-      });
-
-      // User {1}--{1..n} Patients
-      User.hasMany(models.Patient, {
-        as: "patient",
-        foreignKey: "patient_id", // foreignKey de Patient
+        foreignKey: "user_id",
       });
     }
   }
@@ -32,11 +25,12 @@ module.exports = (sequelize, DataTypes) => {
       user_name: DataTypes.STRING,
       user_last_name: DataTypes.STRING,
       birthdate: DataTypes.DATE,
+      address: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
-      address: DataTypes.STRING,
       phone: DataTypes.INTEGER,
       role_id: DataTypes.INTEGER,
+      position: DataTypes.STRING,
     },
     {
       sequelize,

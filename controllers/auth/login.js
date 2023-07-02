@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const { generateToken } = require("../../utils/token");
 
-const { Roles, User } = require("../../models");
+const { User, Roles } = require("../../models");
 
 const test = require("../../models");
 
@@ -50,11 +50,13 @@ module.exports = async (req, res) => {
       userName: user.user_name,
       userRole: user.roles.roles,
     });
-
+    console.log(token);
     res.status(200).json({
       token,
     });
   } catch (error) {
+    // console.log(error);
+    console.log(error);
     res.status(500).json({
       status: "Error",
       message: error.message,
