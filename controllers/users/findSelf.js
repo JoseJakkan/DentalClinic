@@ -1,15 +1,21 @@
- const { User } = require("../../models/index");
+const { User } = require("../../models");
 
 module.exports = async (req, res) => {
-  const { userID } = req.param;
+  const { userId } = req;
 
   try {
-    if ((userID = User.id)) {
-      res.status(200).json(user);
-    } else {
-      res.status(404).json("Not found");
-    }
-    console.log(user);
-    console.log(token);
-  } catch (error) {}
+    const users = await User.findOne({
+      where: { id: userId },
+      attributes: {
+        exclude: ["id", "password", "createdAt", "updatedAt", "role_id"],
+      },
+    });
+
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({
+      status: "Error",
+      message: "Error retreiving user",
+    });
+  }
 };

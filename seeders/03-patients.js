@@ -4,53 +4,48 @@ const { Op } = require("sequelize");
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      "appointments",
+      "patients",
       [
         {
-          doctor_id: 1,
-          patient_id: 8,
-          date: "2023-07-05",
-          time: "14:00",
+          user_id: 6,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          doctor_id: 2,
-          patient_id: 6,
-          date: "2023-07-08",
-          time: "11:00",
+          user_id: 7,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          doctor_id: 3,
-          patient_id: 1,
-          date: "2023-07-06",
-          time: "12:00",
+          user_id: 8,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          doctor_id: 4,
-          patient_id: 7,
-          date: "2023-07-12",
-          time: "18:00",
+          user_id: 9,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+
+        {
+          user_id: 10,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+
+        {
+          user_id: 11,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+
+        {
+          user_id: 12,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          doctor_id: 1,
-          patient_id: 4,
-          date: "2023-07-23",
-          time: "09:00",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          doctor_id: 2,
-          patient_id: 2,
-          date: "2023-07-17",
-          time: "11:00",
+          user_id: 13,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -58,8 +53,7 @@ module.exports = {
       {}
     );
   },
-
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete("appointments", {});
+    await queryInterface.bulkDelete("patients");
   },
 };

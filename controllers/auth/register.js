@@ -1,17 +1,11 @@
 const bcrypt = require("bcrypt");
-const {  User } = require("../../models"); */
-
-/**
- * Create new user
- * Url example: [POST] http://localhost:3000/auth/register
- * @param {*} req Request object
- * @param {*} res Response object
- */
+const { Patient, User } = require("../../models");
 
 module.exports = async (req, res) => {
+  //Required Parameters
   const {
     user_name,
-    user_last_name,
+    user_lastname,
     email,
     password,
     birthdate,
@@ -19,36 +13,44 @@ module.exports = async (req, res) => {
     phone,
   } = req.body;
 
+//Pasword Validation
+
   if (password.lenght < 8) {
     return res.status(400).json({
       status: "Error",
-      message: "Password length can not be less than 8",
+      message: "Password length can't be less than 8",
     });
   }
 
   try {
+
+    //New user register
     const hash = bcrypt.hashSync(password, 10);
 
     const newUser = {
       user_name,
-      user_last_name,
+      user_lastname,
       email,
       password: hash,
       birthdate,
       address,
       phone,
-      id_role: 2, // role = user
-      position: "Patient",
+      role_id: 2,
     };
 
     const user = await User.create(newUser);
 
+    const newPatient = {
+      user_id: user.id,
+    };
+
+    const patient = await Patient.create(newPatient);
 
     res.status(201).json({
       message: "User created succsessfully",
     });
   } catch (error) {
-    
+    console.log(error);
 
     const statusCode =
       error.name == "SequelizeUniqueConstraintError" ||

@@ -1,9 +1,20 @@
-const { User } = require("../../models/index");
+const { User } = require("../../models");
 
 module.exports = async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const { id } = req.params;
-    const user = await User.findByPk(id);
-    res.status(200).json(user);
-  } catch (error) {}
+    const users = await User.findByPk(id, {
+      attributes: {
+        exclude: ["password", "createdAt", "updatedAt"],
+      },
+    });
+
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({
+      status: "error",
+      message: "Error retreiving user",
+    });
+  }
 };

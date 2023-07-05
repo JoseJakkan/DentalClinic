@@ -2,40 +2,70 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      User.belongsTo(models.Roles, {
+      // User {1..n}--{1} Role
+      User.belongsTo(models.Role, {
         as: "role",
-        foreignKey: "roles_id",
+        foreignKey: "role_id", // foreignKey de User
       });
-    }
-    static associate(models) {
-      User.hasMany(models.Appointment, {
-        as: "user",
-        foreignKey: "user_id",
+
+      // User {1}..{01} Doctor
+      User.hasOne(models.Doctor, {
+        as: "doctor",
+        foreignKey: "user_id", // foreignKey en Doctor
+      });
+
+      // User {1}..{01} Patient
+      User.hasOne(models.Patient, {
+        as: "patient",
+        foreignKey: "user_id", // foreignKey en Patient
       });
     }
   }
   User.init(
     {
-      user_name: DataTypes.STRING,
-      user_last_name: DataTypes.STRING,
-      birthdate: DataTypes.DATE,
+      user_name: {
+        type: DataTypes.STRING,
+        validate: {
+          is: {
+            msg: "Name not valid",
+            args: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
+          },
+        },
+      },
+      user_lastname: {
+        type: DataTypes.STRING,
+        validate: {
+          is: {
+            msg: "Last name not valid",
+            args: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
+          },
+        },
+      },
+      birthdate: {
+        type: DataTypes.DATE,
+        validate: {
+          isDate: true,
+        },
+      },
+      email: {
+        type: DataTypes.STRING,
+        unique: true,
+        validate: {
+          isEmail: {
+            msg: "Email not valid",
+          },
+        },
+      },
       address: DataTypes.STRING,
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
       phone: DataTypes.INTEGER,
+      password: DataTypes.STRING,
       role_id: DataTypes.INTEGER,
-      position: DataTypes.STRING,
     },
     {
       sequelize,
       modelName: "User",
-      tableName: "user",
+      tableName: "users",
     }
   );
   return User;

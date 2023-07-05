@@ -110,24 +110,63 @@ Los Endopoints actualmente son los siguientes
 -getById
 GET http://localhost:3000/admin/10
 
+3 . Endpoints de Doctor
+
+- doctorAppointment
+  GET http://localhost:3000/doctor/doctorAppoinment
+
+-findPatient
+
+GET http://localhost:3000/doctor/findPatient?page=1
+
+4. Endpoints de Paciente
+
+-findSelf
+
+GET http://localhost:3000/users/profile
+
+-createAppointment
+
+POST http://localhost:3000/users/createAppoint
+
+{
+"patient_id":"7",
+"doctor_id": "4",
+"date": "2023-08-23",
+"time": "10.30"  
+}
+
+-cancelAppoint
+
+DELETE http://localhost:3000/users/cancelAppoint
+
+{
+"id": "1"
+}
+
+-findAppointment
+
+GET http://localhost:3000/users/findAppointment
+
+-modifyProfile
+
+PUT http://localhost:3000/users/modifyProfile
+
+{
+"user_name": "newName",
+"user_lastname": "newLastname"
+}
+
+-modifyAppointment
+
+PUT http://localhost:3000/users/modifyAppointment/1
+
+{
+"Date": "12/08/01",
+"Time": "14.00"
+}
+
 <a name="item7"></a>
-
-### _Futuras Mejoras_
-
-En futuras actualizaciones se crearan los siguiente Endpoints
-
-1. Como usuario:
-
-- Busqueda del propio perfil
-- Modificacion del propio perfil
-- Pedir cita
-- Modificar cita
-- Eliminar cita
-
-2.  Como doctor
-
-- Consultar sus propias citas
-- Consultar todos los pacientes
 
 <a name="item8"></a>
 

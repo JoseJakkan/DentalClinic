@@ -1,65 +1,64 @@
 const bcrypt = require("bcrypt");
 const { generateToken } = require("../../utils/token");
+const { Role, User } = require("../../models");
 
-const { User, Roles } = require("../../models");
-
-const test = require("../../models");
-
-/**
- * Login user
- * Url example: [POST] http://localhost:3000/auth/login
- * @param {*} req Request object
- * @param {*} res Response object
- */
 module.exports = async (req, res) => {
   const { email, password } = req.body;
+
+  //Password Validation in form
 
   if (!email || !password) {
     return res.status(400).json({
       status: "Error",
-      message: "Passeord Required",
+      message: "Email and Password are required",
     });
   }
+
+  //Login ·ndpoint
 
   try {
     const user = await User.findOne({
       where: {
         email: email,
       },
-      include: [{ model: Roles, as: "roles" }],
+      include: [{ model: Role, as: "role" }],
     });
+
+    // Credential Validation
 
     if (!user) {
       return res.status(400).json({
         status: "Error",
-        message: "Bad Credential",
+        message: "Credentials do not match our records",
       });
     }
+
+    //Password validation by encriptation
 
     const isMatch = bcrypt.compareSync(password, user.password);
 
     if (!isMatch) {
       return res.status(400).json({
         status: "Error",
-        message: "Bad Credential",
+        message: "Credentials do not match our records",
       });
     }
 
+    //Token Generator
+
     const token = generateToken({
       userId: user.id,
-      userName: user.user_name,
-      userRole: user.roles.roles,
+      userName: user.name,
+      userRole: user.role.role,
     });
-    console.log(token);
+
     res.status(200).json({
       token,
     });
   } catch (error) {
-    // console.log(error);
-    console.log(error);
     res.status(500).json({
       status: "Error",
-      message: error.message,
+      message: "User login failed",
     });
   }
 };

@@ -1,6 +1,7 @@
 const { User } = require("../../models");
 
 module.exports = async (req, res) => {
+
   //Pagination
   let { page } = req.query;
 
@@ -18,22 +19,16 @@ module.exports = async (req, res) => {
     });
   }
 
-  //Find All Endpoint
+//Find Patients Endpoint
 
   try {
-    const users = await User.findAll({
-      limit: LIMIT,
-      offset: (page - 1) * LIMIT,
-      attributes: { exclude: ["password", "createdAt", "updatedAt"] },
-    });
-    res.status(200).json({
-      info: {
-        count: userCount,
-        page,
-        pages: maxPages,
+    const patients = await User.findAll({
+      where: { role_id: 2 },
+      attributes: {
+        exclude: ["id", "password", "createdAt", "updatedAt", "role_id"],
       },
-      results: users,
     });
+    res.status(200).json(patients);
   } catch (error) {
     res.status(500).json({
       status: "error",

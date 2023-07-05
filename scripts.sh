@@ -2,15 +2,27 @@
 
 
 
-# crear modelo Roles
+
+# crear modelo Role
 sequelize model:generate --name Roles --attributes 'roles:string'
 
+
+
 # crear modelo User
-sequelize model:generate --name User --attributes 'user_name:string,user_last_name:string,birthdate:date,address:string,email:string,password:string,phone:integer,role_id:integer,position:string'
+sequelize model:generate --name User --attributes 'user_name:string,user_last_name:string,birthdate:date,email:string,password:string,phone:integer, address:string,role_id:integer'
+
+# crear modelo Patient
+
+sequelize model:generate --name Patient --attributes 'user_id:integer'
+
+# crear modelo Doctor
+
+sequelize model:generate --name Doctor --attributes 'user_id:integer'
 
 # crear modelo Appointment
-sequelize model:generate --name Appointment --attributes 'user_id_integer,date:DATE'
+sequelize model:generate --name Appointment --attributes 'patient_id:integer,doctor_id:integer,date:dateOnly'
 
+# las tablas intermedias en una relacion N:N no llevan modelo, pero si llevan migracion
 # las tablas intermedias en una relacion N:N no llevan modelo, pero si llevan migracion
 
 

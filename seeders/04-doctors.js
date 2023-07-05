@@ -1,24 +1,28 @@
-("use strict");
 const { Op } = require("sequelize");
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
-      "roles",
+      "doctors",
       [
         {
-          role: "admin", // 1
+          user_id: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          role: "patient", // 2
+          user_id: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          role: "doctor", // 3
+          user_id: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          user_id: 5,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -26,13 +30,7 @@ module.exports = {
       {}
     );
   },
-
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete("doctors");
   },
 };
