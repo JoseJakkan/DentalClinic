@@ -1,8 +1,10 @@
 const { User } = require("../../models");
 
 module.exports = async (req, res) => {
+  //user_id verification
   const { id } = req.params;
 
+  //get by id endpoint
   try {
     const users = await User.findByPk(id, {
       attributes: {
