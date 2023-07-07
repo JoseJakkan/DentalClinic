@@ -5,6 +5,10 @@
 ### dotenv ###
 .env
 
+###config### 
+
+config.json
+
 ### Linux ###
 *~
 
