@@ -3,17 +3,9 @@ const { Patient, User } = require("../../models");
 
 module.exports = async (req, res) => {
   //Required Parameters
-  const {
-    user_name,
-    user_lastname,
-    email,
-    password,
-    birthdate,
-    address,
-    phone,
-  } = req.body;
+  const { user_name, user_lastname, email, password } = req.body;
 
-//Pasword Validation
+  //Pasword Validation
 
   if (password.lenght < 8) {
     return res.status(400).json({
@@ -23,7 +15,6 @@ module.exports = async (req, res) => {
   }
 
   try {
-
     //New user register
     const hash = bcrypt.hashSync(password, 10);
 
@@ -32,9 +23,6 @@ module.exports = async (req, res) => {
       user_lastname,
       email,
       password: hash,
-      birthdate,
-      address,
-      phone,
       role_id: 2,
     };
 

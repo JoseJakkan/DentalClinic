@@ -5,10 +5,20 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 require("dotenv").config();
 const app = express();
+const cors = require("cors");
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
+
+const corsOptions = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 
 app.use(logger("dev"));
 app.use(express.json());

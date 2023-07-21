@@ -1,4 +1,4 @@
-const { Patient, Appointment } = require("../../models");
+const { Patient, Appointment, Doctor, User } = require("../../models");
 
 module.exports = async (req, res) => {
   //user_id Validation
@@ -8,19 +8,81 @@ module.exports = async (req, res) => {
     const patient = await Patient.findOne({
       where: { user_id: userId },
     });
-    //find appointment ednpoint
-    const findAppointment = await Appointment.findAll({
+
+    //find appointment endpoint
+    /* const findAppointment = await Appointment.findAll({
+      where: { patient_id: patient.id },
+      include: [
+        {
+          model: User,
+          as: "patient",
+          attributes: {
+            exclude: ["id", "createdAt", "updatedAt"],
+          },
+        },
+        {
+          model: User,
+          as: "doctor",
+          attributes: {
+            exclude: ["id", "createdAt", "updatedAt"],
+          },
+        },
+      ],
+    }); */
+
+    const appointments = await Appointment.findAll({
       where: { patient_id: patient.id },
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
+      include: [
+        {
+          model: Patient,
+          as: "patient",
+          attributes: ["id"],
+          include: [
+            {
+              model: User,
+              as: "user",
+              attributes: ["user_name", "user_lastname"],
+            },
+          ],
+        },
+        {
+          model: Doctor,
+          as: "doctor",
+          attributes: ["id"],
+          include: [
+            {
+              model: User,
+              as: "user",
+              attributes: ["user_name", "user_lastname"],
+            },
+          ],
+        },
+      ],
     });
 
-    res.status(200).json(findAppointment);
+    const filterAppo = appointments.map((a) => {
+      return {
+        patient: {
+          name: a.patient.user.user_name,
+          lastname: a.patient.user.user_lastname,
+        },
+        doctor: {
+          name: a.doctor.user.user_name,
+          lastname: a.doctor.user.user_lastname,
+        },
+        date: a.date,
+        time: a.time,
+      };
+    });
+
+    res.status(200).json(filterAppo);
   } catch (error) {
     res.status(500).json({
       status: "Error",
-      message: "Error retreiving appointment",
+      message: "Error retrieving appointment",
     });
   }
 };
