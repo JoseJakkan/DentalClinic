@@ -1,4 +1,4 @@
-const { Appointment, Doctor } = require("../../models");
+const { Patient, Appointment, Doctor, User } = require("../../models");
 
 module.exports = async (req, res) => {
   const { userId } = req;
