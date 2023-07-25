@@ -6,7 +6,7 @@ const router = express.Router();
 //find the user profile
 router.get("/profile", verifyToken, userController.findSelf);
 //Create appointment
-router.post("/createAppoint", verifyToken, userController.createAppoint);
+router.post("/createAppoint", userController.createAppoint);
 //Cancel Appointment
 router.delete("/cancelAppoint", verifyToken, userController.cancelAppoint);
 //Find Appointment of User

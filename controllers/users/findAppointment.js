@@ -9,27 +9,6 @@ module.exports = async (req, res) => {
       where: { user_id: userId },
     });
 
-    //find appointment endpoint
-    /* const findAppointment = await Appointment.findAll({
-      where: { patient_id: patient.id },
-      include: [
-        {
-          model: User,
-          as: "patient",
-          attributes: {
-            exclude: ["id", "createdAt", "updatedAt"],
-          },
-        },
-        {
-          model: User,
-          as: "doctor",
-          attributes: {
-            exclude: ["id", "createdAt", "updatedAt"],
-          },
-        },
-      ],
-    }); */
-
     const appointments = await Appointment.findAll({
       where: { patient_id: patient.id },
       attributes: {

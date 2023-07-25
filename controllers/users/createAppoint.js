@@ -21,6 +21,7 @@ module.exports = async (req, res) => {
     res.status(500).json({
       status: "error",
       message: "Error creating appointment",
+      error: error.message,
     });
   }
 };

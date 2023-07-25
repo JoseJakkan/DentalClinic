@@ -33,6 +33,16 @@ module.exports = async (req, res) => {
       });
     }
 
+    // get student id, doctor id
+    /* const userRole = user.Role.role;
+    let patient;
+    let doctor;
+    if (userRole === "patient") {
+      student = await user.get();
+    } else if (userRole === "doctor") {
+      doctor = await user.getDoctor();
+    } */
+
     //Password validation by encriptation
 
     const isMatch = bcrypt.compareSync(password, user.password);
@@ -45,11 +55,14 @@ module.exports = async (req, res) => {
     }
 
     //Token Generator
-
+    console.log(user);
     const token = generateToken({
       userId: user.id,
-      userName: user.name,
+      userName: user.user_name,
       userRole: user.role.role,
+      roleId: user.id_role,
+    /*   patientId: user.patient.user_id,
+      appoId: appointment_id, */
     });
 
     res.status(200).json({
