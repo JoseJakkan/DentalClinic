@@ -60,8 +60,8 @@ module.exports = async (req, res) => {
       userId: user.id,
       userName: user.user_name,
       userRole: user.role.role,
-      roleId: user.id_role,
-    /*   patientId: user.patient.user_id,
+      roleId: user.role_id,
+      /*   patientId: user.patient.user_id,
       appoId: appointment_id, */
     });
 

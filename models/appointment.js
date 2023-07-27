@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
           isDate: true,
         },
       },
-      time: DataTypes.STRING,
+      time: DataTypes.TIME,
     },
     {
       sequelize,

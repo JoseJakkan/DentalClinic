@@ -1,4 +1,4 @@
-const { Appointment, Patient } = require("../../models");
+const { Patient, Appointment } = require("../../models");
 
 module.exports = async (req, res) => {
   //Parameters required
@@ -8,20 +8,15 @@ module.exports = async (req, res) => {
     //user_id Validation
     const patient = await Patient.findOne({ where: { user_id: userId } });
 
-    //New appointment creation
-    const createAppointment = { ...req.body, patient_id: patient.id };
+    const newAppointment = { ...req.body, patient_id: patient.id };
 
-    await Appointment.create(createAppointment);
+    await Appointment.create(newAppointment);
 
-    res.status(200).json({
-      message: "Appointment created sucessfully",
-    });
+    res.status(200).json(newAppointment);
   } catch (error) {
-    console.log(error);
     res.status(500).json({
-      status: "error",
+      status: "Error",
       message: "Error creating appointment",
-      error: error.message,
     });
   }
 };
