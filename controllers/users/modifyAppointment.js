@@ -60,6 +60,7 @@ module.exports = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       status: "Error",
+      error,
       message: "Error retrieving appointment",
     });
   }
