@@ -52,6 +52,7 @@ module.exports = async (req, res) => {
           name: a.doctor.user.user_name,
           lastname: a.doctor.user.user_lastname,
         },
+        id: a.id,
         date: a.date,
         time: a.time,
       };

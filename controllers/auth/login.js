@@ -33,15 +33,7 @@ module.exports = async (req, res) => {
       });
     }
 
-    // get student id, doctor id
-    /* const userRole = user.Role.role;
-    let patient;
-    let doctor;
-    if (userRole === "patient") {
-      student = await user.get();
-    } else if (userRole === "doctor") {
-      doctor = await user.getDoctor();
-    } */
+   
 
     //Password validation by encriptation
 
