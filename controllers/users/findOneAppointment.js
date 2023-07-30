@@ -71,7 +71,7 @@ module.exports = async (req, res) => {
         },
       ],
       where: {
-        patient_id: patient.id,
+        //patient_id: patient.id,
         id: appoId,
       },
     });
