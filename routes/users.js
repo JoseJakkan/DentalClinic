@@ -15,5 +15,11 @@ router.get("/findAppointment", verifyToken, userController.findAppointment);
 router.put("/modifyProfile", verifyToken, userController.modifyProfile);
 //Updtate Appointment
 router.put("/modifyAppointment", verifyToken, userController.modifyAppointment);
+//Find One Appointment
+router.get(
+  "/findOneAppointment",
+  verifyToken,
+  userController.findOneAppointment
+);
 
 module.exports = router;
