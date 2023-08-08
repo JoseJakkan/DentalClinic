@@ -1,4 +1,4 @@
-#Appi Backend de Clinica Dental
+###Appi Backend de Clinica Dental
 
 ##Contenido
 
@@ -173,5 +173,5 @@ PUT http://localhost:3000/users/modifyAppointment/1
 ### _Sobre el autor_
 
 - Jose Antonio Lopez
-- Estudiante de GeeksHubs Academy https://geekshubsacademy.com/
+
 - e-mail: lopez.joseantonio82@gmail.com
